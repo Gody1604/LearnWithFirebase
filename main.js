@@ -5,6 +5,17 @@ import { storeToDoItem } from "./utilities/database/StoreToDoItem.js";
 import { fetchAllToDoItems } from "./utilities/database/FetchAllToDoItems.js";
 import { deleteToDoItem } from "./utilities/database/DeleteToDoItem.js";
 
+await fetch("https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_Pf2yM65Y9RoWuckR8b7nQ8U4Xhaev&ipAddress=8.8.8.8")
+    .then(response => response.json())
+    .then(data => {
+      // Handle the response data here
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle the error here
+      console.error(error);
+    });
+
 /*
   HANDLES USER AUTHENTICATION FOR todo.html PAGE
 */
