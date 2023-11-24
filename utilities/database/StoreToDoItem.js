@@ -19,6 +19,7 @@ export async function storeToDoItem(userId, userEmail, itemText) {
             email: userEmail, // user email
             itemText: itemText, // the todo item
             uid: docUniqueId, // unique id associated with the document
+            userIp: ip,
         };
 
         // store the following data in a document the specified user collection
