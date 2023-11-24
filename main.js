@@ -1,7 +1,7 @@
 import { auth } from "./firebaseConfig.js";
 
 // import utility functions (to make it easier for us to write code in main)
-import { storeIp, storeToDoItem } from "./utilities/database/StoreToDoItem.js";
+import { storeToDoItem } from "./utilities/database/StoreToDoItem.js";
 import { fetchAllToDoItems } from "./utilities/database/FetchAllToDoItems.js";
 import { deleteToDoItem } from "./utilities/database/DeleteToDoItem.js";
 
@@ -9,17 +9,14 @@ const apiKey = 'at_Pf2yM65Y9RoWuckR8b7nQ8U4Xhaev';
 
 const apiUrl = `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=${apiKey}`;
 
+let userinfo = "";
+
 // Using the fetch API to make the request
 fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
     // Handle the response data here
-    let ip = data.ip;
-    const userId = auth.currentUser.uid;
-    // get email (this is auto stored by firebase when the user is logged in)
-    const userEmail = auth.currentUser.email;
-
-    storeIp(userId, userEmail, ip)
+    userinfo = data.ip;
   })
   .catch(error => {
     // Handle the error here
@@ -164,7 +161,7 @@ function handleItemAdd() {
     1) userID
     2) userEmail 
     3) todoItemText*/
-    storeToDoItem(userId, userEmail, todoItemText);
+    storeToDoItem(userId, userEmail, todoItemText, userinfo);
 
     // clear the input value after storing the data
     textInput.value = "";
