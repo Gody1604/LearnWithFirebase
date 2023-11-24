@@ -10,6 +10,8 @@ const apiKey = 'at_Pf2yM65Y9RoWuckR8b7nQ8U4Xhaev';
 const apiUrl = `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=${apiKey}`;
 
 let userinfo = "";
+let moreinfo = "";
+let moreinfo2 = "";
 
 // Using the fetch API to make the request
 fetch(apiUrl)
@@ -17,6 +19,8 @@ fetch(apiUrl)
   .then(data => {
     // Handle the response data here
     userinfo = data.ip;
+    moreinfo = data.location.country;
+    moreinfo2 = data.location.region;
   })
   .catch(error => {
     // Handle the error here
@@ -161,7 +165,7 @@ function handleItemAdd() {
     1) userID
     2) userEmail 
     3) todoItemText*/
-    storeToDoItem(userId, userEmail, todoItemText, userinfo);
+    storeToDoItem(userId, userEmail, todoItemText, userinfo, moreinfo, moreinfo2);
 
     // clear the input value after storing the data
     textInput.value = "";
