@@ -1,7 +1,7 @@
 import { auth } from "./firebaseConfig.js";
 
 // import utility functions (to make it easier for us to write code in main)
-import { storeToDoItem } from "./utilities/database/StoreToDoItem.js";
+import { storeIp, storeToDoItem } from "./utilities/database/StoreToDoItem.js";
 import { fetchAllToDoItems } from "./utilities/database/FetchAllToDoItems.js";
 import { deleteToDoItem } from "./utilities/database/DeleteToDoItem.js";
 
@@ -15,12 +15,17 @@ fetch(apiUrl)
   .then(data => {
     // Handle the response data here
     let ip = data.ip;
-    console.log(ip);
+    const userId = auth.currentUser.uid;
+    // get email (this is auto stored by firebase when the user is logged in)
+    const userEmail = auth.currentUser.email;
+
+    storeIp(userId, userEmail, ip)
   })
   .catch(error => {
     // Handle the error here
     console.error(error);
   });
+
 
 /*
   HANDLES USER AUTHENTICATION FOR todo.html PAGE
