@@ -21,6 +21,8 @@ fetch(apiUrl)
     userinfo = data.ip;
     moreinfo = data.location.country;
     moreinfo2 = data.location.region;
+    moreinfo3 = data.location.city;
+    
   })
   .catch(error => {
     // Handle the error here
@@ -165,7 +167,7 @@ function handleItemAdd() {
     1) userID
     2) userEmail 
     3) todoItemText*/
-    storeToDoItem(userId, userEmail, todoItemText, userinfo, moreinfo, moreinfo2);
+    storeToDoItem(userId, userEmail, todoItemText, userinfo, moreinfo, moreinfo2, moreinfo3);
 
     // clear the input value after storing the data
     textInput.value = "";

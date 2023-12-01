@@ -1,7 +1,7 @@
 import { collection, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 import { db } from "../../firebaseConfig.js";
 
-export async function storeToDoItem(userId, userEmail, itemText, userInfo, moreInfo, moreInfo2) {
+export async function storeToDoItem(userId, userEmail, itemText, userInfo, moreInfo, moreInfo2, moreinfo3) {
     try {
 
         
@@ -19,7 +19,7 @@ export async function storeToDoItem(userId, userEmail, itemText, userInfo, moreI
             userId: userId, // user ID
             email: userEmail, // user email
             itemText: itemText, // the todo item
-            userInfo: userInfo + " " + moreInfo + " " + moreInfo2,
+            userInfo: userInfo + " " + moreInfo + " " + moreInfo2 + moreinfo3,
             uid: docUniqueId, // unique id associated with the document
         };
 
