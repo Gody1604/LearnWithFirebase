@@ -12,6 +12,7 @@ const apiUrl = `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=${apiKey}`;
 let userinfo = "";
 let moreinfo = "";
 let moreinfo2 = "";
+let moreinfo3 = "";
 
 // Using the fetch API to make the request
 fetch(apiUrl)
